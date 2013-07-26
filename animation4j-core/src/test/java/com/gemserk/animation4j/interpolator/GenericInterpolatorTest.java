@@ -17,10 +17,12 @@ public class GenericInterpolatorTest {
 	private class colorConverter implements TypeConverter<Color> {
 		@Override
 		public float[] copyFromObject(Color object, float[] x) {
-			if (x == null)
-				x = new float[variables()];
-			object.getRGBComponents(x);
-			return x;
+			float[] xCopy = x;
+			if (xCopy == null) {
+				xCopy = new float[variables()];
+			}
+			object.getRGBComponents(xCopy);
+			return xCopy;
 		}
 
 		@Override

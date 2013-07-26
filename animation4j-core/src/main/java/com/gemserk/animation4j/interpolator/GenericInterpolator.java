@@ -63,6 +63,7 @@ public class GenericInterpolator<T> implements Interpolator<T> {
 		this(converter, new FloatArrayInterpolator(converter.variables(), functions));
 	}
 
+	@Override
 	public T interpolate(T t1, T t2, float t) {
 		a = converter.copyFromObject(t1, a);
 		b = converter.copyFromObject(t2, b);

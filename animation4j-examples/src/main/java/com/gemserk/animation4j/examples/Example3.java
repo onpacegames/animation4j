@@ -53,7 +53,6 @@ public class Example3 extends Java2dGameAdapter {
 
 	private Color houseColor;
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void init() {
 		
@@ -117,7 +116,7 @@ public class Example3 extends Java2dGameAdapter {
 	@Override
 	public void update(int delta) {
 
-		colorTransition.update(0.001f * (float) delta);
+		colorTransition.update(0.001f * delta);
 
 		Point mousePosition = mouseInput.getPosition();
 		if (new Rectangle(320 - 64, 340 - 46, 128, 92).contains(mousePosition.x, mousePosition.y)) {

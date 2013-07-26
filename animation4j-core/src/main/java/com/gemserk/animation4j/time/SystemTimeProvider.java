@@ -7,8 +7,8 @@ package com.gemserk.animation4j.time;
  */
 public class SystemTimeProvider implements TimeProvider {
 
+	@Override
 	public float getTime() {
-		return (float) System.nanoTime() * 0.000000001f;
+		return System.nanoTime() * 0.000000001f;
 	}
-
 }

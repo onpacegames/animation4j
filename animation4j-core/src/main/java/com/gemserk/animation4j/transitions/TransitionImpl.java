@@ -27,6 +27,7 @@ public class TransitionImpl<T> implements Transition<T> {
 		return transition.getSpeed();
 	}
 
+	@Override
 	public void setSpeed(float speed) {
 		transition.setSpeed(speed);
 	}
@@ -35,10 +36,11 @@ public class TransitionImpl<T> implements Transition<T> {
 		this.mutableObject = mutableObject;
 		this.typeConverter = typeConverter;
 		transition = new TransitionFloatArrayImpl(typeConverter.variables());
-		if (mutableObject != null)
+		if (mutableObject != null) {
 			tmp = typeConverter.copyFromObject(mutableObject, tmp);
-		else 
+		} else {
 			tmp = new float[typeConverter.variables()];
+		}
 		transition.startWithFloatArray(tmp);
 	}
 	
@@ -52,6 +54,7 @@ public class TransitionImpl<T> implements Transition<T> {
 	 * @param object
 	 *            The mutable object to be modified.
 	 */
+	@Override
 	public void setObject(T object) {
 		this.mutableObject = object;
 	}
@@ -78,11 +81,13 @@ public class TransitionImpl<T> implements Transition<T> {
 		transition.startWithFloatArray(time, tmp);
 	}
 
+	@Override
 	public void startWithFloatArray(float... value) {
 		transition.startWithFloatArray(value);
 		typeConverter.copyToObject(mutableObject, transition.get());
 	}
 
+	@Override
 	public void startWithFloatArray(float time, float... value) {
 		transition.startWithFloatArray(time, value);
 	}
@@ -99,8 +104,9 @@ public class TransitionImpl<T> implements Transition<T> {
 
 	@Override
 	public void update(float delta) {
-		if (!isStarted() || isFinished())
+		if (!isStarted() || isFinished()) {
 			return;
+		}
 		transition.update(delta);
 		typeConverter.copyToObject(mutableObject, transition.get());
 	}

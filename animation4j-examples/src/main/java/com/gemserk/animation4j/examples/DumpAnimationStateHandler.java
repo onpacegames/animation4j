@@ -15,6 +15,7 @@ public class DumpAnimationStateHandler extends AnimationEventHandler {
 		this.name = name;
 	}
 	
+	@Override
 	public void onAnimationStarted(AnimationEvent e) {
 		System.out.println("animation " + name + " started");
 	}

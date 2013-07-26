@@ -155,10 +155,11 @@ public class Example2 extends Java2dGameAdapter {
 		animationHandlerManager.with(new AnimationEventHandler() {
 			@Override
 			public void onAnimationStarted(AnimationEvent e) {
-				if (currentText < texts.length)
+				if (currentText < texts.length) {
 					textPane.setText(texts[currentText]);
-				else
+				} else {
 					textPane.setText("");
+				}
 			}
 		}).handleChangesOf(showAnimation);
 
@@ -225,7 +226,7 @@ public class Example2 extends Java2dGameAdapter {
 		Vector2f position = element.position;
 
 		java2dRenderer.render(new Java2dImageRenderObject(1, houseImage, 320, 340, 1, 1, 0f));
-		java2dRenderer.render(new Java2dImageRenderObject(1, globeImage, (float) position.getX(), (float) position.getY(), 1, 1, 0f, new Color(1f, 1f, 1f, element.alpha.value)));
+		java2dRenderer.render(new Java2dImageRenderObject(1, globeImage, position.getX(), position.getY(), 1, 1, 0f, new Color(1f, 1f, 1f, element.alpha.value)));
 
 		previousTransform = graphics.getTransform();
 
@@ -241,7 +242,7 @@ public class Example2 extends Java2dGameAdapter {
 	@Override
 	public void update(int delta) {
 
-		currentAnimation.update((float) delta * 0.001f);
+		currentAnimation.update(delta * 0.001f);
 
 		if (keyboardInput.keyDownOnce(KeyEvent.VK_ENTER)) {
 			currentText++;

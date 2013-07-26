@@ -30,7 +30,6 @@ public class Timeline {
 	 * @param index
 	 *            The index of the corresponding index.
 	 */
-	@SuppressWarnings("unchecked")
 	public <T> TimelineValue<T> getTimeLineValue(int index) {
 		return values.get(index);
 	}
@@ -49,8 +48,9 @@ public class Timeline {
 	 *            The time where you want the time line to be.
 	 */
 	public void move(float time) {
-		for (int i = 0; i < values.size(); i++)
+		for (int i = 0; i < values.size(); i++) {
 			values.get(i).setTime(time);
+		}
 	}
 
 	@Override
@@ -61,11 +61,11 @@ public class Timeline {
 	/**
 	 * Configures the specified objects for each TimelineValue in order.
 	 */
-	@SuppressWarnings("unchecked")
 	public void setObjects(Object... objects) {
 		for (int i = 0; i < values.size(); i++) {
-			if (i >= objects.length)
+			if (i >= objects.length) {
 				return;
+			}
 			values.get(i).setObject(objects[i]);
 		}
 	}

@@ -12,13 +12,13 @@ public class TransitionEventHandlerExample {
 	private static Vector2fConverter vector2fConverter = new Vector2fConverter();
 	private static Synchronizer synchronizer = new Synchronizer();
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		// register a type converter for Vector2f class.
 		testUsingTransitionMonitor();
 		testUsingSynchronizers();
 	}
 
-	protected static void testUsingTransitionMonitor() throws InterruptedException {
+	protected static void testUsingTransitionMonitor() {
 		
 		Vector2f object1 = new Vector2f(0f, 0f);
 
@@ -53,7 +53,7 @@ public class TransitionEventHandlerExample {
 
 	}
 
-	protected static void testUsingSynchronizers() throws InterruptedException {
+	protected static void testUsingSynchronizers() {
 
 		TransitionEventHandler<Vector2f> eventHandler = new TransitionEventHandler<Vector2f>() {
 

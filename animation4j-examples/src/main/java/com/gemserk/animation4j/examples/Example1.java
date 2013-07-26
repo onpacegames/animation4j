@@ -100,10 +100,11 @@ public class Example1 extends Java2dGameAdapter {
 
 	@Override
 	public void update(int delta) {
-		animation.update((float) delta * 0.001f);
+		animation.update(delta * 0.001f);
 
-		if (keyboardInput.keyDownOnce(KeyEvent.VK_ENTER)) 
+		if (keyboardInput.keyDownOnce(KeyEvent.VK_ENTER)) {
 			animation.restart();
+		}
 
 		animationHandlerManager.checkAnimationChanges();
 	}

@@ -1,6 +1,5 @@
 package com.gemserk.animation4j.animations;
 
-import com.gemserk.animation4j.animations.Animation;
 
 public class MockAnimation implements Animation {
 
@@ -48,7 +47,7 @@ public class MockAnimation implements Animation {
 	public void restart() {
 		started = false;
 		finished = false;
-		this.iteration = 1;
+		iteration = 1;
 	}
 
 	@Override
@@ -59,8 +58,8 @@ public class MockAnimation implements Animation {
 
 	@Override
 	public void start(int iterationCount) {
-		this.iterations = iterationCount;
-		this.iteration = 1;
+		iterations = iterationCount;
+		iteration = 1;
 	}
 
 	@Override
@@ -89,6 +88,7 @@ public class MockAnimation implements Animation {
 		this.playingDirection = playingDirection;
 	}
 
+	@Override
 	public PlayingDirection getPlayingDirection() {
 		return playingDirection;
 	}

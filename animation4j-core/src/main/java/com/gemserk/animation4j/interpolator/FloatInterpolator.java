@@ -10,8 +10,9 @@ public class FloatInterpolator {
 	}
 	
 	public static float interpolate(float a, float b, float t, InterpolationFunction function) {
-		t = function.interpolate(t);
-		return a * (1 - t) + b * t;
+		float tCopy = t;
+		tCopy = function.interpolate(tCopy);
+		return a * (1 - tCopy) + b * tCopy;
 	}
 
 }

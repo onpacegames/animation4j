@@ -21,6 +21,7 @@ public class TimelineAnimation implements Animation {
 		return animation.getDuration();
 	}
 
+	@Override
 	public void setSpeed(float speed) {
 		animation.setSpeed(speed);
 	}
@@ -29,6 +30,7 @@ public class TimelineAnimation implements Animation {
 		animation.setAlternateDirection(alternateDirection);
 	}
 
+	@Override
 	public float getCurrentTime() {
 		return animation.getCurrentTime();
 	}
@@ -56,8 +58,8 @@ public class TimelineAnimation implements Animation {
 
 	public TimelineAnimation(Timeline timeline, float duration, boolean started, boolean alternateDirection) {
 		this.timeline = timeline;
-		this.animation = new AnimationImpl(started, alternateDirection);
-		this.animation.setDuration(duration);
+		animation = new AnimationImpl(started, alternateDirection);
+		animation.setDuration(duration);
 	}
 
 	/**
@@ -92,14 +94,17 @@ public class TimelineAnimation implements Animation {
 		animation.restart();
 	}
 
+	@Override
 	public void stop() {
 		animation.stop();
 	}
 
+	@Override
 	public void pause() {
 		animation.pause();
 	}
 
+	@Override
 	public void resume() {
 		animation.resume();
 	}
@@ -119,13 +124,16 @@ public class TimelineAnimation implements Animation {
 		return animation.isStarted();
 	}
 
+	@Override
 	public boolean isPlaying() {
 		return animation.isPlaying();
 	}
 
+	@Override
 	public void update(float time) {
-		if (!isPlaying())
+		if (!isPlaying()) {
 			return;
+		}
 		animation.update(time);
 		timeline.move(animation.getCurrentTime() - animation.getDelay());
 	}

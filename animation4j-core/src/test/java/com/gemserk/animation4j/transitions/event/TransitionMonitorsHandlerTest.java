@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 
 import com.gemserk.animation4j.transitions.Transition;
 
+@SuppressWarnings("deprecation")
 @RunWith(JMock.class)
 public class TransitionMonitorsHandlerTest {
 

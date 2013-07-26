@@ -1,6 +1,9 @@
 package com.gemserk.animation4j.transitions;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThat;
 
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
@@ -35,11 +38,13 @@ public class TransitionImplTest {
 
 		@Override
 		public float[] copyFromObject(MyObject object, float[] x) {
-			if (x == null)
-				x = new float[variables()];
-			x[0] = object.x;
-			x[1] = object.y;
-			return x;
+			float[] xCopy = x;
+			if (xCopy == null) {
+				xCopy = new float[variables()];
+			}
+			xCopy[0] = object.x;
+			xCopy[1] = object.y;
+			return xCopy;
 		}
 
 		@Override
@@ -244,12 +249,14 @@ public class TransitionImplTest {
 
 			@Override
 			public float[] copyFromObject(MyObject object, float[] x) {
-				if (x == null)
-					x = new float[variables()];
-				x[0] = object.x;
-				x[1] = object.y;
-				x[2] = object.x + object.y;
-				return x;
+				float[] xCopy = x;
+				if (xCopy == null) {
+					xCopy = new float[variables()];
+				}
+				xCopy[0] = object.x;
+				xCopy[1] = object.y;
+				xCopy[2] = object.x + object.y;
+				return xCopy;
 			}
 
 		}).start(1f, 2f, 3f) //

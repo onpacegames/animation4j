@@ -18,10 +18,12 @@ public class TimelineValueImpl<T> implements TimelineValue<T> {
 	private T object;
 	private InternalTimelineValue<T> internalTimelineValue;
 
+	@Override
 	public void setObject(T object) {
 		this.object = object;
 	}
 
+	@Override
 	public T getObject() {
 		return object;
 	}
@@ -43,14 +45,17 @@ public class TimelineValueImpl<T> implements TimelineValue<T> {
 		internalTimelineValue = new InternalTimelineValue<T>(typeConverter);
 	}
 
+	@Override
 	public void addKeyFrame(KeyFrame keyFrame) {
 		internalTimelineValue.addKeyFrame(keyFrame);
 	}
 
+	@Override
 	public void setTime(float time) {
 		internalTimelineValue.setTime(object, time);
 	}
 
+	@Override
 	public void setTime(T object, float time) {
 		internalTimelineValue.setTime(object, time);
 	}

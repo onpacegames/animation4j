@@ -6,7 +6,7 @@ import com.gemserk.animation4j.timeline.TimelineAnimation;
 
 public class TimelineAnimationExample {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		Converters.register(Vector2f.class, new Vector2fConverter());
 
 		System.out.println("First example: animation with one iteration only");
@@ -15,7 +15,7 @@ public class TimelineAnimationExample {
 		exampleAnimationWithAlternateDirections();
 	}
 
-	protected static void exampleAnimationOneIterationWithDelay() throws InterruptedException {
+	protected static void exampleAnimationOneIterationWithDelay() {
 
 		Vector2f currentValue = new Vector2f(0, 0);
 
@@ -47,7 +47,7 @@ public class TimelineAnimationExample {
 
 	}
 
-	protected static void exampleAnimationWithAlternateDirections() throws InterruptedException {
+	protected static void exampleAnimationWithAlternateDirections() {
 		
 		Vector2f currentValue = new Vector2f(0, 0);
 

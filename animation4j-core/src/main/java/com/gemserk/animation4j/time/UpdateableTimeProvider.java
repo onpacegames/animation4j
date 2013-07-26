@@ -9,6 +9,7 @@ public class UpdateableTimeProvider implements TimeProvider {
 
 	float time = 0f;
 
+	@Override
 	public float getTime() {
 		return time;
 	}
@@ -22,5 +23,4 @@ public class UpdateableTimeProvider implements TimeProvider {
 	public void update(float time) {
 		this.time += time;
 	}
-
 }

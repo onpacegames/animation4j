@@ -67,15 +67,8 @@
 		<module>animation4j-examples</module>
 	</modules>
 
-	<properties>
-		<compiler.version>1.6</compiler.version>
-		<maven.version>2.0.10</maven.version>
-		<!-- This is configuration for the new github plugin, it has no prefixes as other configuration options -->
-		<repositoryOwner>gemserk</repositoryOwner>
-		<repositoryName>animation4j</repositoryName>
-	</properties>
-
 	<build>
+	    <defaultGoal>install</defaultGoal>
 		<plugins>
 
 			<plugin>
@@ -83,8 +76,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -92,7 +85,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
+				<version>2.6</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
 				</configuration>
@@ -101,7 +94,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.1.2</version>
+				<version>2.2.1</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -118,7 +111,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.7</version>
+				<version>2.9.1</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -135,7 +128,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.1</version>
+				<version>2.4.1</version>
 				<configuration>
 					<mavenExecutorId>forked-path</mavenExecutorId>
 					<useReleaseProfile>false</useReleaseProfile>
@@ -153,7 +146,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.1</version>
+						<version>1.4</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -174,32 +167,32 @@
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.7</version>
+				<version>4.11</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jmock</groupId>
 				<artifactId>jmock</artifactId>
-				<version>2.5.1</version>
+				<version>2.6.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jmock</groupId>
 				<artifactId>jmock-legacy</artifactId>
-				<version>2.5.1</version>
+				<version>2.6.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jmock</groupId>
 				<artifactId>jmock-junit4</artifactId>
-				<version>2.5.1</version>
+				<version>2.6.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
-				<version>2.5.1</version>
+				<version>3.2</version>
 			</dependency>
 			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymockclassextension</artifactId>
-				<version>2.4</version>
+				<version>3.2</version>
 			</dependency>
 
 			<dependency>

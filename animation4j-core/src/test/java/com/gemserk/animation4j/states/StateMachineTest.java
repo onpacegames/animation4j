@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import com.gemserk.animation4j.animations.Animation;
 import com.gemserk.animation4j.animations.MockAnimation;
 
+@SuppressWarnings("deprecation")
 @RunWith(JMock.class)
 public class StateMachineTest {
 

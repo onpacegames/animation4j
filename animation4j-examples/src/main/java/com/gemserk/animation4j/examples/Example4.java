@@ -52,7 +52,7 @@ public class Example4 extends Java2dGameAdapter {
 
 		Transition<Vector2f> size;
 
-		Boolean mouseInside = false;
+		Boolean mouseInside = Boolean.FALSE;
 
 	}
 
@@ -160,11 +160,11 @@ public class Example4 extends Java2dGameAdapter {
 
 			Vector2f size = button.size.get();
 
-			float x = (float) position.getX();
-			float y = (float) position.getY();
+			float x = position.getX();
+			float y = position.getY();
 
-			float sx = (float) size.getX();
-			float sy = (float) size.getY();
+			float sx = size.getX();
+			float sy = size.getY();
 
 			java.awt.Color color = getColor(button.color);
 			java.awt.Color glowColor = getColor(button.glowColor);
@@ -179,9 +179,9 @@ public class Example4 extends Java2dGameAdapter {
 	@Override
 	public void update(int delta) {
 		
-		float deltaF = 0.001f * (float) delta;
+		float deltaF = 0.001f * delta;
 
-		backgroundColor.update(0.001f * (float) delta);
+		backgroundColor.update(0.001f * delta);
 
 		Point mousePosition = mouseInput.getPosition();
 
@@ -192,8 +192,8 @@ public class Example4 extends Java2dGameAdapter {
 
 			button.color.update(deltaF);
 			button.glowColor.update(deltaF);
-			button.position.update(0.001f * (float) delta);
-			button.size.update(0.001f * (float) delta);
+			button.position.update(0.001f * delta);
+			button.size.update(0.001f * delta);
 
 			Vector2f position = button.position.get();
 
@@ -201,16 +201,16 @@ public class Example4 extends Java2dGameAdapter {
 			int y = (int) position.getY();
 
 			if (new Rectangle(x - width / 2, y - height / 2, width, height).contains(mousePosition.x, mousePosition.y)) {
-				if (!button.mouseInside) {
-					button.mouseInside = true;
+				if (!button.mouseInside.booleanValue()) {
+					button.mouseInside = Boolean.TRUE;
 					// when the mouse is over the image, we set the color to white
 					button.color.start(0.25f, new Color(1f, 1f, 1f, 1f));
 					button.glowColor.start(1f, new Color(1f, 0f, 0f, 1f));
 					button.size.start(0.25f, new Vector2f(1.05f, 1.05f));
 				}
 			} else {
-				if (button.mouseInside) {
-					button.mouseInside = false;
+				if (button.mouseInside.booleanValue()) {
+					button.mouseInside = Boolean.FALSE;
 					// when the mouse left the image, we set again the color to the previous color.
 					button.color.start(0.25f, new Color(1f, 1f, 1f, 1f));
 					button.glowColor.start(0.25f, new Color(1f, 0f, 0f, 0f));

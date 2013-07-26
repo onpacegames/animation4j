@@ -11,24 +11,28 @@ public class ColorConverter implements TypeConverter<Color>{
 
 	@Override
 	public float[] copyFromObject(Color c, float[] x) {
-		if (x == null)
-			x = new float[variables()];
-		x[0] = c.r;
-		x[1] = c.g;
-		x[2] = c.b;
-		x[3] = c.a;
-		return x;
+		float[] xCopy = x;
+		if (xCopy == null) {
+			xCopy = new float[variables()];
+		}
+		xCopy[0] = c.r;
+		xCopy[1] = c.g;
+		xCopy[2] = c.b;
+		xCopy[3] = c.a;
+		return xCopy;
 	}
 
 	@Override
 	public Color copyToObject(Color c, float[] x) {
-		if (c == null)
-			c = new Color();
-		c.r = x[0];
-		c.g = x[1];
-		c.b = x[2];
-		c.a = x[3];
-		return c;
+		Color colorCopy = c;
+		if (colorCopy == null) {
+			colorCopy = new Color();
+		}
+		colorCopy.r = x[0];
+		colorCopy.g = x[1];
+		colorCopy.b = x[2];
+		colorCopy.a = x[3];
+		return colorCopy;
 	}
 
 }

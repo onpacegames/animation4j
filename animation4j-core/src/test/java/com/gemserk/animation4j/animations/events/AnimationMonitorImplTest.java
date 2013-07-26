@@ -26,7 +26,7 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 	}
 
 	@Test
@@ -43,30 +43,30 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onStartCalled);
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.setStarted(true);
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
-		assertEquals(true, animationEventHandler.onStartCalled);
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.setFinished(true);
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
-		assertEquals(false, animationEventHandler.onStartCalled);
-		assertEquals(true, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
-		assertEquals(false, animationEventHandler.onFinishCalled);
-		assertEquals(false, animationEventHandler.onStartCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
 
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
-		assertEquals(false, animationEventHandler.onFinishCalled);
-		assertEquals(false, animationEventHandler.onStartCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
 	}
 
 	@Test
@@ -84,18 +84,18 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.setFinished(true);
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(true, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 	}
 
 	@Test
@@ -111,12 +111,12 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(true, animationEventHandler.onStartCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onStartCalled));
 		animationEventHandler.onStartCalled = false;
 
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onStartCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
 	}
 
 	@Test
@@ -132,19 +132,19 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(true, animationEventHandler.onStartCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onStartCalled));
 		animationEventHandler.onStartCalled = false;
 
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onStartCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
 
 		animation.setStarted(false);
 		animationMonitor.checkAnimationChanges();
 		animation.setStarted(true);
 		animationEventHandler.onStartCalled = false;
 		animationMonitor.checkAnimationChanges();
-		assertEquals(true, animationEventHandler.onStartCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onStartCalled));
 	}
 
 	@Test
@@ -204,15 +204,15 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onIterationChangedCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onIterationChangedCalled));
 		animation.setIteration(2);
 		animationMonitor.checkAnimationChanges();
-		assertEquals(true, animationEventHandler.onIterationChangedCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onIterationChangedCalled));
 
 		animationEventHandler.onIterationChangedCalled = false;
 
 		animationMonitor.checkAnimationChanges();
-		assertEquals(false, animationEventHandler.onIterationChangedCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onIterationChangedCalled));
 
 	}
 
@@ -232,10 +232,10 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onIterationChangedCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onIterationChangedCalled));
 		animation.setIteration(2);
 		animationMonitor.checkAnimationChanges();
-		assertEquals(false, animationEventHandler.onIterationChangedCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onIterationChangedCalled));
 
 	}
 
@@ -255,43 +255,43 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onStartCalled);
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.setStarted(true);
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(true, animationEventHandler.onStartCalled);
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.setFinished(true);
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onStartCalled);
-		assertEquals(true, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.restart();
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onStartCalled);
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.setStarted(true);
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(true, animationEventHandler.onStartCalled);
-		assertEquals(false, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 		animation.setFinished(true);
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onStartCalled);
-		assertEquals(true, animationEventHandler.onFinishCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onStartCalled));
+		assertEquals(Boolean.TRUE, Boolean.valueOf(animationEventHandler.onFinishCalled));
 
 	}
 
@@ -311,13 +311,13 @@ public class AnimationMonitorImplTest {
 		AnimationMonitor animationMonitor = new AnimationMonitor(animation, animationEventHandler);
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onIterationChangedCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onIterationChangedCalled));
 
 		animation.restart();
 		animationEventHandler.reset();
 		animationMonitor.checkAnimationChanges();
 
-		assertEquals(false, animationEventHandler.onIterationChangedCalled);
+		assertEquals(Boolean.FALSE, Boolean.valueOf(animationEventHandler.onIterationChangedCalled));
 
 	}
 }

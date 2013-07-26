@@ -29,20 +29,21 @@ public class TransitionFloatArrayImpl implements Transition<float[]> {
 		return speed;
 	}
 
+	@Override
 	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
 
 	public TransitionFloatArrayImpl(int variables) {
-		this.a = new float[variables];
-		this.b = new float[variables];
-		this.x = new float[variables];
+		a = new float[variables];
+		b = new float[variables];
+		x = new float[variables];
 	}
 
 	public TransitionFloatArrayImpl(float[] value) {
-		this.a = new float[value.length];
-		this.b = new float[value.length];
-		this.x = new float[value.length];
+		a = new float[value.length];
+		b = new float[value.length];
+		x = new float[value.length];
 		startWithFloatArray(value);
 	}
 
@@ -85,14 +86,16 @@ public class TransitionFloatArrayImpl implements Transition<float[]> {
 
 	@Override
 	public void update(float delta) {
-		if (!isStarted() || isFinished())
+		if (!isStarted() || isFinished()) {
 			return;
+		}
 
 		timeTransition.update(delta * speed);
 		FloatArrayInterpolator.interpolate(a, b, x, timeTransition.get(), functions);
 
-		if (timeTransition.isFinished())
+		if (timeTransition.isFinished()) {
 			finished = true;
+		}
 	}
 
 	@Override

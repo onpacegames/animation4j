@@ -35,7 +35,7 @@ public class AnimationManagerTest {
 		
 		animationManager.update(1f);
 		
-		assertThat(animationEventHandler2.onFinishCalled, IsEqual.equalTo(true));
+		assertThat(Boolean.valueOf(animationEventHandler2.onFinishCalled), IsEqual.equalTo(Boolean.TRUE));
 
 	}
 

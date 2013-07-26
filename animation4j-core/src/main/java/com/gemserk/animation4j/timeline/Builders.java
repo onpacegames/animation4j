@@ -64,8 +64,9 @@ public class Builders {
 		
 		public TimelineValueImpl<T> build() {
 			TimelineValueImpl<T> timelineValue = new TimelineValueImpl<T>(mutableObject, typeConverter);
-			for (int i = 0; i < keyFrames.size(); i++)
+			for (int i = 0; i < keyFrames.size(); i++) {
 				timelineValue.addKeyFrame(keyFrames.get(i));
+			}
 			reset();
 			return timelineValue;
 		}
@@ -131,7 +132,7 @@ public class Builders {
 		 * @return
 		 */
 		public TimelineAnimationBuilder delay(float time) {
-			this.delay = time;
+			delay = time;
 			return this;
 		}
 
@@ -142,7 +143,7 @@ public class Builders {
 		 *            The Time in ms of the delay.
 		 */
 		public TimelineAnimationBuilder delay(int time) {
-			this.delay = (float) time * 0.001f;
+			delay = time * 0.001f;
 			return this;
 		}
 

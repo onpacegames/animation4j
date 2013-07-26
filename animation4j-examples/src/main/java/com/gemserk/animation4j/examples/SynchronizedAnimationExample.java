@@ -13,13 +13,13 @@ public class SynchronizedAnimationExample {
 
 	}
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		Converters.register(Vector2f.class, new Vector2fConverter());
 		System.out.println("First example: animation with one iteration only");
 		exampleAnimationOneIterationWithDelay();
 	}
 
-	protected static void exampleAnimationOneIterationWithDelay() throws InterruptedException {
+	protected static void exampleAnimationOneIterationWithDelay() {
 
 		// One problem with time line animations is that you have to get values by hand and setting them to your objects
 

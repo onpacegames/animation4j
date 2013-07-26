@@ -51,7 +51,7 @@ public class Java2dWindow {
 
 	long fps = 0;
 
-	private Boolean done;
+	private boolean done;
 
 	public long getFrameTime() {
 		return 1000 / getFramesPerSecond();
@@ -80,15 +80,16 @@ public class Java2dWindow {
 
 			double newTime = 0.001 * System.currentTimeMillis();
 			double frameTime = newTime - currentTime;
-			if (frameTime > 0.25)
+			if (frameTime > 0.25) {
 				frameTime = 0.25;
+			}
 			currentTime = newTime;
 
 			accumulator += frameTime;
 
 			while (accumulator >= dt) {
 
-				// ¿should input polling be inside the while of the accumulator?
+				// should input polling be inside the while of the accumulator?
 				keyboardInput.poll();
 				mouseInput.poll();
 

@@ -8,11 +8,11 @@ public class TransitionMonitorExample {
 
 	static Vector2fConverter vector2fConverter = new Vector2fConverter();
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		testWithDefaultSystemProvider();
 	}
 
-	protected static void testWithDefaultSystemProvider() throws InterruptedException {
+	protected static void testWithDefaultSystemProvider() {
 		TransitionMonitor transitionMonitor = new TransitionMonitor();
 		
 		Vector2f object1 = new Vector2f(0f, 0f);

@@ -8,21 +8,25 @@ public class Vector2fConverter implements TypeConverter<Vector2f> {
 	
 	@Override
 	public float[] copyFromObject(Vector2f v, float[] x) {
-		if (x == null)
-			x = new float[variables()];
-		x[0] = v.x;
-		x[1] = v.y;
-		return x;
+		float[] xCopy = x;
+		if (xCopy == null) {
+			xCopy = new float[variables()];
+		}
+		xCopy[0] = v.x;
+		xCopy[1] = v.y;
+		return xCopy;
 
 	}
 
 	@Override
 	public Vector2f copyToObject(Vector2f v, float[] x) {
-		if (v == null)
-			v = new Vector2f(0, 0);
-		v.x = x[0];
-		v.y = x[1];
-		return v;
+		Vector2f vCopy = v;
+		if (vCopy == null) {
+			vCopy = new Vector2f(0, 0);
+		}
+		vCopy.x = x[0];
+		vCopy.y = x[1];
+		return vCopy;
 	}
 
 	@Override

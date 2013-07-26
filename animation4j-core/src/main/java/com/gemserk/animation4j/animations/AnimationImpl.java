@@ -31,6 +31,7 @@ public class AnimationImpl implements Animation {
 		return speed;
 	}
 
+	@Override
 	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
@@ -39,6 +40,7 @@ public class AnimationImpl implements Animation {
 		this.alternateDirection = alternateDirection;
 	}
 
+	@Override
 	public float getCurrentTime() {
 		return currentTime;
 	}
@@ -56,7 +58,7 @@ public class AnimationImpl implements Animation {
 	}
 
 	public AnimationImpl(boolean started, boolean alternateDirection) {
-		this.playing = started;
+		playing = started;
 		this.alternateDirection = alternateDirection;
 	}
 
@@ -65,8 +67,9 @@ public class AnimationImpl implements Animation {
 	 */
 	public boolean isIterationFinished() {
 		float delay = getDelay();
-		if (playingDirection.equals(PlayingDirection.Normal))
+		if (playingDirection.equals(PlayingDirection.Normal)) {
 			return currentTime >= duration + delay;
+		}
 		return currentTime + delay <= 0;
 	}
 
@@ -77,11 +80,12 @@ public class AnimationImpl implements Animation {
 
 	@Override
 	public void start(int iterationCount) {
-		this.iterations = iterationCount;
-		if (this.iterations <= 0)
-			this.iterations = Integer.MAX_VALUE;
-		this.currentTime = 0;
-		this.iteration = 1;
+		iterations = iterationCount;
+		if (iterations <= 0) {
+			iterations = Integer.MAX_VALUE;
+		}
+		currentTime = 0;
+		iteration = 1;
 		resume();
 	}
 
@@ -97,6 +101,7 @@ public class AnimationImpl implements Animation {
 		resume();
 	}
 
+	@Override
 	public void stop() {
 		currentTime = 0;
 		iteration = 1;
@@ -104,10 +109,12 @@ public class AnimationImpl implements Animation {
 		pause();
 	}
 
+	@Override
 	public void pause() {
 		playing = false;
 	}
 
+	@Override
 	public void resume() {
 		playing = true;
 	}
@@ -119,15 +126,17 @@ public class AnimationImpl implements Animation {
 
 	@Override
 	public boolean isFinished() {
-		if (iteration > iterations)
+		if (iteration > iterations) {
 			return true;
+		}
 		return isIterationFinished();
 	}
 
 	@Override
 	public boolean isStarted() {
-		if (iteration > 1)
+		if (iteration > 1) {
 			return true;
+		}
 		return currentTime > getDelay();
 	}
 
@@ -136,36 +145,42 @@ public class AnimationImpl implements Animation {
 		return playing;
 	}
 
+	@Override
 	public void update(float time) {
-		if (!playing)
+		if (!playing) {
 			return;
+		}
 		moveCurrentTime(time);
 		if (isIterationFinished()) {
 			iteration++;
-			if (iteration > iterations)
+			if (iteration > iterations) {
 				finishIterations();
-			else
+			} else {
 				nextIteration();
+			}
 		}
 	}
 
 	public void nextIteration() {
 		if (playingDirection.equals(PlayingDirection.Normal)) {
-			if (alternateDirection)
+			if (alternateDirection) {
 				switchDirection();
-			else
+			} else {
 				currentTime = 0 + getDelay();
+			}
 		} else {
-			if (alternateDirection)
+			if (alternateDirection) {
 				switchDirection();
+			}
 		}
 	}
 
 	public void switchDirection() {
-		if (playingDirection == PlayingDirection.Normal)
+		if (playingDirection == PlayingDirection.Normal) {
 			playingDirection = PlayingDirection.Reverse;
-		else
+		} else {
 			playingDirection = PlayingDirection.Normal;
+		}
 	}
 
 	protected void finishIterations() {
@@ -180,10 +195,11 @@ public class AnimationImpl implements Animation {
 	}
 
 	protected void moveCurrentTime(float time) {
-		if (playingDirection.equals(PlayingDirection.Normal))
+		if (playingDirection.equals(PlayingDirection.Normal)) {
 			currentTime += time * speed;
-		else
+		} else {
 			currentTime -= time * speed;
+		}
 	}
 
 }

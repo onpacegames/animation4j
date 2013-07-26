@@ -9,12 +9,11 @@ public class TransitionsExample {
 	
 	static Vector2fConverter vector2fConverter = new Vector2fConverter();
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		System.out.println("Tests how to update a transition");
 		testUsingTransitionDirectly();
 	}
 
-	@SuppressWarnings("unchecked")
 	protected static void testUsingTransitionDirectly() {
 		InterpolationFunction[] functions = { InterpolationFunctions.easeOut(), InterpolationFunctions.easeIn() };
 

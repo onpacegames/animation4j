@@ -38,10 +38,11 @@ public class KeyboardInput implements KeyListener {
 				// If the key is down now, but was not
 				// down last frame, set it to ONCE,
 				// otherwise, set it to PRESSED
-				if (keys[i] == KeyState.RELEASED)
+				if (keys[i] == KeyState.RELEASED) {
 					keys[i] = KeyState.ONCE;
-				else
+				} else {
 					keys[i] = KeyState.PRESSED;
+				}
 			} else {
 				keys[i] = KeyState.RELEASED;
 			}
@@ -56,6 +57,7 @@ public class KeyboardInput implements KeyListener {
 		return keys[keyCode] == KeyState.ONCE;
 	}
 
+	@Override
 	public synchronized void keyPressed(KeyEvent e) {
 		/* Linux implementation has a bug for the autorepeat events: http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4504217 */
 		int keyCode = e.getKeyCode();
@@ -64,6 +66,7 @@ public class KeyboardInput implements KeyListener {
 		}
 	}
 
+	@Override
 	public synchronized void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		if (keyCode >= 0 && keyCode < KEY_COUNT) {
@@ -71,6 +74,7 @@ public class KeyboardInput implements KeyListener {
 		}
 	}
 
+	@Override
 	public void keyTyped(KeyEvent e) {
 		// Not needed
 	}

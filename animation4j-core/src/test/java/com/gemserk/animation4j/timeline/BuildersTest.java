@@ -32,9 +32,9 @@ public class BuildersTest {
 				.delay(0.2f) //
 				.started(true) //
 				.build();
-		assertThat(timelineAnimation.getDelay(), IsEqual.equalTo(0.2f));
-		assertThat(timelineAnimation.getDuration(), IsEqual.equalTo(1.2f));
-		assertThat(timelineAnimation.isStarted(), IsEqual.equalTo(false));
+		assertThat(Float.valueOf(timelineAnimation.getDelay()), IsEqual.equalTo(Float.valueOf(0.2f)));
+		assertThat(Float.valueOf(timelineAnimation.getDuration()), IsEqual.equalTo(Float.valueOf(1.2f)));
+		assertThat(Boolean.valueOf(timelineAnimation.isStarted()), IsEqual.equalTo(Boolean.FALSE));
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class BuildersTest {
 		timelineAnimation.getTimeline().getTimeLineValue(0).setObject(floatValue1);
 		timelineAnimation.update(1.2f);
 		
-		assertThat(floatValue1.value, IsEqual.equalTo(500f));
+		assertThat(Float.valueOf(floatValue1.value), IsEqual.equalTo(Float.valueOf(500f)));
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public class BuildersTest {
 								.keyFrame(1f, new FloatValue(500f)) //
 						)) //
 				.build();
-		assertThat(timelineAnimation.isStarted(), IsEqual.equalTo(false));
+		assertThat(Boolean.valueOf(timelineAnimation.isStarted()), IsEqual.equalTo(Boolean.FALSE));
 	}
 	
 }

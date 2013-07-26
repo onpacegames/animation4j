@@ -73,7 +73,7 @@ public class ExamplesLoader {
 
 		selectedOption = options[0];
 
-		mainFrame.add(new JComboBox(options) {
+		mainFrame.add(new JComboBox<Option>(options) {
 			{
 
 				addItemListener(new ItemListener() {
@@ -120,9 +120,10 @@ public class ExamplesLoader {
 							application.init(selectedOption.name, new Dimension(640, 480), false);
 
 							new Thread() {
+								@Override
 								public void run() {
 									application.start();
-								};
+								}
 							}.start();
 
 						} catch (Exception ex) {

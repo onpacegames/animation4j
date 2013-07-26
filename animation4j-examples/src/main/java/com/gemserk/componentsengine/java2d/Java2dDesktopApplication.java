@@ -39,8 +39,9 @@ public class Java2dDesktopApplication {
 	
 	public void stop() {
 		java2dWindow.stop();
-		if (exitOnClose)
+		if (exitOnClose) {
 			System.exit(0);
+		}
 	}
 
 	protected void createWindow(String title, Dimension resolution, Java2dGame game) {
@@ -56,6 +57,7 @@ public class Java2dDesktopApplication {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		frame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				Java2dDesktopApplication.this.stop();
 			}

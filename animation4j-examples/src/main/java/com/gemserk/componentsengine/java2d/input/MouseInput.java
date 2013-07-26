@@ -54,10 +54,11 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
 			// time, it is ONCE, otherwise it is
 			// PRESSED.
 			if (state[i]) {
-				if (poll[i] == MouseState.RELEASED)
+				if (poll[i] == MouseState.RELEASED) {
 					poll[i] = MouseState.ONCE;
-				else
+				} else {
 					poll[i] = MouseState.PRESSED;
+				}
 			} else {
 				// button is not down
 				poll[i] = MouseState.RELEASED;
@@ -85,30 +86,37 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
 		return poll[button - 1] == MouseState.ONCE || poll[button - 1] == MouseState.PRESSED;
 	}
 
+	@Override
 	public synchronized void mousePressed(MouseEvent e) {
 		state[e.getButton() - 1] = true;
 	}
 
+	@Override
 	public synchronized void mouseReleased(MouseEvent e) {
 		state[e.getButton() - 1] = false;
 	}
 
+	@Override
 	public synchronized void mouseEntered(MouseEvent e) {
 		mouseMoved(e);
 	}
 
+	@Override
 	public synchronized void mouseExited(MouseEvent e) {
 		mouseMoved(e);
 	}
 
+	@Override
 	public synchronized void mouseDragged(MouseEvent e) {
 		mouseMoved(e);
 	}
 
+	@Override
 	public synchronized void mouseMoved(MouseEvent e) {
 		currentPos = e.getPoint();
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Not needed
 	}

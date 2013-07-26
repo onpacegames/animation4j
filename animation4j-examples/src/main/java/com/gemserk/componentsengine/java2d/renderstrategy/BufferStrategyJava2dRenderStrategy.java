@@ -9,6 +9,7 @@ import com.gemserk.componentsengine.java2d.Java2dGame;
 /**
  * @deprecated it is not working right (on linux at least).
  */
+@Deprecated
 public class BufferStrategyJava2dRenderStrategy implements Java2dRenderStrategy {
 
 	private final Canvas canvas;

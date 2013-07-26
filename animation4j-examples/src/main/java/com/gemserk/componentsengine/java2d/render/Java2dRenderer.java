@@ -60,8 +60,8 @@ public class Java2dRenderer {
 				int width = image.getWidth(null);
 				int height = image.getHeight(null);
 
-				float x = (float) (position.getX() + ((float) -width) / 2f);
-				float y = (float) (position.getY() + ((float) -height) / 2f);
+				float x = (float) (position.getX() + -width / 2f);
+				float y = (float) (position.getY() + -height / 2f);
 
 				tx.concatenate(AffineTransform.getTranslateInstance(x + width / 2, y + height / 2));
 				tx.concatenate(AffineTransform.getRotateInstance(theta));
@@ -72,8 +72,9 @@ public class Java2dRenderer {
 
 				Composite previousComposite = graphics.getComposite();
 				// maybe if color is white avoid using the composite to improve performance.
-				if (!Color.white.equals(color))
+				if (!Color.white.equals(color)) {
 					graphics.setComposite(new ColorMultiplyComposite(color));
+				}
 				graphics.drawImage(image, 0, 0, null);
 				graphics.setComposite(previousComposite);
 

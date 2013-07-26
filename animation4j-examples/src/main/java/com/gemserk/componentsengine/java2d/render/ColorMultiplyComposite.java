@@ -16,6 +16,7 @@ public class ColorMultiplyComposite implements Composite {
 		this.color = color;
 	}
 
+	@Override
 	public CompositeContext createContext(ColorModel srcColorModel, ColorModel dstColorModel, RenderingHints hints) {
 		return new BlendingContext(color);
 	}
@@ -28,6 +29,7 @@ public class ColorMultiplyComposite implements Composite {
 			this.color = color;
 		}
 
+		@Override
 		public void compose(Raster src, Raster dstIn, WritableRaster dstOut) {
 
 			int width = Math.min(src.getWidth(), dstIn.getWidth());
@@ -42,10 +44,10 @@ public class ColorMultiplyComposite implements Composite {
 				return;
 			}
 
-			float colorAlpha = ((float) color.getAlpha()) / 255f;
-			float colorRed = ((float) color.getRed()) / 255f;
-			float colorGreen = ((float) color.getGreen()) / 255f;
-			float colorBlue = ((float) color.getBlue()) / 255f;
+			float colorAlpha = color.getAlpha() / 255f;
+			float colorRed = color.getRed() / 255f;
+			float colorGreen = color.getGreen() / 255f;
+			float colorBlue = color.getBlue() / 255f;
 
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {
@@ -60,13 +62,14 @@ public class ColorMultiplyComposite implements Composite {
 					dstOutColors[0] = srcColors[0] * a * r + dstInColors[0] * (1 - a);
 					dstOutColors[1] = srcColors[1] * a * g + dstInColors[1] * (1 - a);
 					dstOutColors[2] = srcColors[2] * a * b + dstInColors[2] * (1 - a);
-					dstOutColors[3] = srcColors[3] * a; 
+					dstOutColors[3] = srcColors[3] * a;
 
 					dstOut.setPixel(x, y, dstOutColors);
 				}
 			}
 		}
 
+		@Override
 		public void dispose() {
 
 		}

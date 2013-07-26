@@ -49,28 +49,33 @@ public class FloatArrayInterpolator implements Interpolator<float[]> {
 		this.functions = new InterpolationFunction[x.length];
 
 		int i = 0;
-		for (i = 0; i < functions.length; i++)
+		for (i = 0; i < functions.length; i++) {
 			this.functions[i] = functions[i];
-		for (; i < this.functions.length; i++)
+		}
+		for (; i < this.functions.length; i++) {
 			this.functions[i] = InterpolationFunctions.linear();
+		}
 	}
 
 	@Override
 	public float[] interpolate(float[] a, float[] b, float t) {
+		float tCopy = t;
 		for (int i = 0; i < x.length; i++) {
-			t = functions[i].interpolate(t);
-			x[i] = a[i] * (1 - t) + b[i] * t;
+			tCopy = functions[i].interpolate(tCopy);
+			x[i] = a[i] * (1 - tCopy) + b[i] * tCopy;
 		}
 		return x;
 	}
 
 	public static void interpolate(float[] a, float[] b, float[] out, float t, InterpolationFunction... functions) {
+		float tCopy = t;
 		for (int i = 0; i < out.length; i++) {
-			if (functions != null && i < functions.length)
-				t = functions[i].interpolate(t);
-			else
-				t = InterpolationFunctions.linear().interpolate(t);
-			out[i] = a[i] * (1 - t) + b[i] * t;
+			if (functions != null && i < functions.length) {
+				tCopy = functions[i].interpolate(tCopy);
+			} else {
+				tCopy = InterpolationFunctions.linear().interpolate(tCopy);
+			}
+			out[i] = a[i] * (1 - tCopy) + b[i] * tCopy;
 		}
 	}
 

@@ -15,12 +15,12 @@ public class SynchronizedTransitionExample {
 
 	private static Synchronizer synchronizer = new Synchronizer();
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		Converters.register(Vector2f.class, new Vector2fConverter());
 		example1();
 	}
 
-	protected static void example1() throws InterruptedException {
+	protected static void example1() {
 		MyObject myObject = new MyObject();
 
 		synchronizer.transition(Transitions.transition(myObject.position, new Vector2fConverter()) //
