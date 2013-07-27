@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>animation4j</artifactId>
 		<groupId>com.gemserk.animation4j</groupId>
-		<version>0.2.2-SNAPSHOT</version>
+		<version>1.0.0-OPG-SNAPSHOT</version>
 	</parent>
 	<artifactId>animation4j-examples</artifactId>
 	<name>Examples module of animation4j</name>

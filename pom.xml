@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gemserk.animation4j</groupId>
 	<artifactId>animation4j</artifactId>
-	<version>0.2.2-SNAPSHOT</version>
+	<version>1.0.0-OPG-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Parent module for Animations 4 Java</name>
 	<description>Parent module for Animations 4 Java</description>
@@ -74,7 +74,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.1</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
